@@ -293,7 +293,7 @@ const Page = () => {
               <Label htmlFor="grade">Grade</Label>
               <Input
                 id="grade"
-                placeholder="Expected Grade"
+                placeholder="Expected Grade (A+ to F)"
                 required
                 type="text"
                 value={grade}
