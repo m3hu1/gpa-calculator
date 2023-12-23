@@ -48,6 +48,12 @@ const Page = () => {
     }
   };
 
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      addCourse();
+    }
+  };
+
   const calculateGPA = () => {
     const totalCredits = courses.reduce(
       (acc, course) => acc + course.credits,
@@ -119,6 +125,7 @@ const Page = () => {
                 type="text"
                 value={courseName}
                 onChange={(e) => setCourseName(e.target.value)}
+                onKeyPress={handleKeyPress}
                 style={{ color: "white", backgroundColor: "#1E1E1E" }}
               />
             </div>
@@ -131,6 +138,7 @@ const Page = () => {
                 type="number"
                 value={credits}
                 onChange={(e) => setCredits(e.target.value)}
+                onKeyPress={handleKeyPress}
                 style={{ color: "white", backgroundColor: "#1E1E1E" }}
               />
             </div>
@@ -143,6 +151,7 @@ const Page = () => {
                 type="text"
                 value={grade}
                 onChange={(e) => setGrade(e.target.value)}
+                onKeyPress={handleKeyPress}
                 style={{ color: "white", backgroundColor: "#1E1E1E" }}
               />
             </div>
@@ -166,9 +175,9 @@ const Page = () => {
               <table className="w-full">
                 <thead>
                   <tr>
-                    <th className="text-left">Course Name</th>
-                    <th className="text-center">Credits</th>
-                    <th className="text-center">Grade</th>
+                    <th className="text-left underline">Course Name</th>
+                    <th className="text-center underline">Credits</th>
+                    <th className="text-center underline">Grade</th>
                     {}
                   </tr>
                 </thead>
