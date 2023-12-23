@@ -85,7 +85,7 @@ const Page = () => {
           {}
           <span>GPA Calculator</span>
         </div>
-        <Link href="https://github.com/m3hu1">
+        <Link href="https://github.com/m3hu1/gpa-calculator">
           <Button className="rounded-full" size="icon" variant="ghost">
             <img
               alt="GitHub Icon"

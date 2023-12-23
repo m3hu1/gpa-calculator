@@ -2,6 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400&display=swap');
+
+html, body {
+  font-family: 'JetBrains Mono', monospace;
+}
+
 .custom-text-color {
   color: #2fed9d;
 }
