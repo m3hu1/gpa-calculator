@@ -2,6 +2,18 @@
 @tailwind components;
 @tailwind utilities;
 
+.custom-text-color {
+  color: #2fed9d;
+}
+
+.custom-text-color-2 {
+  color: #45474F;
+}
+
+.custom-text-color-3 {
+  color: #E56B6F;
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;

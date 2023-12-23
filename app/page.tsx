@@ -1,113 +1,218 @@
-import Image from 'next/image'
+"use client";
 
-export default function Home() {
-  return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+import React, { useState } from "react";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import {
+  CardTitle,
+  CardDescription,
+  CardHeader,
+  CardContent,
+  CardFooter,
+  Card,
+} from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px] z-[-1]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className="mb-32 grid text-center lg:max-w-5xl lg:w-full lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Explore starter templates for Next.js.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  )
+interface Course {
+  name: string;
+  credits: number;
+  grade: string;
 }
+
+const Page = () => {
+  const [courses, setCourses] = useState<Course[]>([]);
+  const [courseName, setCourseName] = useState("");
+  const [credits, setCredits] = useState("");
+  const [grade, setGrade] = useState("");
+
+  const deleteCourse = (index: number) => {
+    const updatedCourses = [...courses];
+    updatedCourses.splice(index, 1);
+    setCourses(updatedCourses);
+  };
+
+  const addCourse = () => {
+    if (courseName && credits && grade) {
+      const newCourse = {
+        name: courseName,
+        credits: parseInt(credits),
+        grade: grade,
+      };
+
+      setCourses([...courses, newCourse]);
+
+      setCourseName("");
+      setCredits("");
+      setGrade("");
+    }
+  };
+
+  const calculateGPA = () => {
+    const totalCredits = courses.reduce(
+      (acc, course) => acc + course.credits,
+      0
+    );
+    const totalScore = courses.reduce((acc, course) => {
+      const gradeScore = getGradeScore(course.grade);
+      return acc + gradeScore * course.credits;
+    }, 0);
+
+    const rawGPA = totalCredits === 0 ? 0 : totalScore / totalCredits;
+    const roundedGPA = parseFloat(rawGPA.toFixed(2));
+    return roundedGPA;
+  };
+
+  const getGradeScore = (grade: string) => {
+    const gradeScores: Record<string, number> = {
+      "A+": 10,
+      A: 9,
+      "B+": 8,
+      B: 7,
+      "C+": 6,
+      C: 5,
+      D: 4,
+      F: 0,
+    };
+    return gradeScores[grade] || 0;
+  };
+
+  return (
+    <div className="flex flex-col w-full min-h-screen p-10">
+      <header className="flex items-center justify-between mb-10">
+        <div className="flex items-center gap-2 text-lg font-semibold sm:text-base custom-text-color">
+          <img src="/favicon.png" alt="Logo" className="w-8 h-8" />
+          {}
+          <span>GPA Calculator</span>
+        </div>
+        <Link href="https://github.com/m3hu1">
+          <Button className="rounded-full" size="icon" variant="ghost">
+            <img
+              alt="GitHub Icon"
+              height="32"
+              src="/github.png"
+              style={{
+                aspectRatio: "32/32",
+                objectFit: "cover",
+              }}
+              width="32"
+            />
+            <span className="sr-only">GitHub Profile</span>
+          </Button>
+        </Link>
+      </header>
+      <main className="flex flex-col gap-8">
+        {}
+        <Card>
+          <CardHeader>
+            <CardTitle className="custom-text-color-3">Add Course</CardTitle>
+            <CardDescription>Enter your course details below</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            {}
+            <div className="space-y-2">
+              <Label htmlFor="courseName">Course Name</Label>
+              <Input
+                id="courseName"
+                placeholder="Course Name"
+                required
+                type="text"
+                value={courseName}
+                onChange={(e) => setCourseName(e.target.value)}
+                style={{ color: "white", backgroundColor: "#1E1E1E" }}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="credits">Credits</Label>
+              <Input
+                id="credits"
+                placeholder="Credits"
+                required
+                type="number"
+                value={credits}
+                onChange={(e) => setCredits(e.target.value)}
+                style={{ color: "white", backgroundColor: "#1E1E1E" }}
+              />
+            </div>
+            <div className="space-y-2">
+              <Label htmlFor="grade">Grade</Label>
+              <Input
+                id="grade"
+                placeholder="Expected Grade"
+                required
+                type="text"
+                value={grade}
+                onChange={(e) => setGrade(e.target.value)}
+                style={{ color: "white", backgroundColor: "#1E1E1E" }}
+              />
+            </div>
+          </CardContent>
+          <CardFooter>
+            <Button className="w-full custom-text-color" onClick={addCourse}>
+              Add Course
+            </Button>
+          </CardFooter>
+        </Card>
+        <Card>
+          <CardHeader>
+            <CardTitle className="custom-text-color-3">Your Courses</CardTitle>
+            <CardDescription>
+              All your added courses will appear here
+            </CardDescription>
+          </CardHeader>
+
+          <CardContent>
+            {courses.length > 0 ? (
+              <table className="w-full">
+                <thead>
+                  <tr>
+                    <th className="text-left">Course Name</th>
+                    <th className="text-center">Credits</th>
+                    <th className="text-center">Grade</th>
+                    {}
+                  </tr>
+                </thead>
+                <tbody>
+                  {courses.map((course, index) => (
+                    <tr key={index} className="">
+                      <td>{course.name}</td>
+                      <td className="text-center">{course.credits}</td>
+                      <td className="text-center">{course.grade}</td>
+                      <td className="text-right">
+                        <Button
+                          className="custom-text-color"
+                          variant="ghost"
+                          onClick={() => deleteCourse(index)}
+                        >
+                          Delete
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            ) : (
+              <div className="space-y-2">
+                <p className="text-sm">No courses added yet.</p>
+              </div>
+            )}
+          </CardContent>
+        </Card>
+        {}
+        <Card>
+          <CardHeader>
+            <CardTitle className="custom-text-color-3">Your GPA</CardTitle>
+            <CardDescription>
+              Your calculated GPA will appear here
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <p className="text-xl">{calculateGPA()}</p>
+          </CardContent>
+        </Card>
+      </main>
+    </div>
+  );
+};
+
+export default Page;
