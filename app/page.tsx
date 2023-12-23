@@ -13,6 +13,41 @@ import {
 } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
+import Select from "react-select";
+
+interface CustomStyles {
+  control: (provided: any, state: any) => any;
+  option: (provided: any, state: any) => any;
+  menu: (provided: any) => any;
+  singleValue: (provided: any) => any;
+  placeholder: (provided: any) => any;
+}
+
+const customStyles: CustomStyles = {
+  control: (provided) => ({
+    ...provided,
+    border: "1px solid #ccc",
+    borderRadius: "5px",
+    backgroundColor: "#1E1E1E",
+  }),
+  option: (provided, state) => ({
+    ...provided,
+    backgroundColor: state.isSelected ? "#1E1E1E" : "#1E1E1E",
+  }),
+  menu: (provided) => ({
+    ...provided,
+    backgroundColor: "#1E1E1E",
+  }),
+  singleValue: (provided) => ({
+    ...provided,
+    color: "white",
+  }),
+  placeholder: (provided) => ({
+    ...provided,
+    color: "#9CA3AF",
+    fontSize: "14px",
+  }),
+};
 
 interface Course {
   name: string;
@@ -21,10 +56,98 @@ interface Course {
 }
 
 const Page = () => {
+  const [isClearable, setIsClearable] = useState(true);
   const [courses, setCourses] = useState<Course[]>([]);
-  const [courseName, setCourseName] = useState("");
-  const [credits, setCredits] = useState("");
+  const [selectedCourse, setSelectedCourse] = useState<{
+    value: string;
+    label: string;
+    credits: number;
+  } | null>(null);
+  const [selectedCredits, setSelectedCredits] = useState("");
+  const [selectedYear, setSelectedYear] = useState<{
+    value: string;
+    label: string;
+  } | null>(null);
   const [grade, setGrade] = useState("");
+  const courseOptions: {
+    label: string;
+    options: { value: string; label: string; credits: number }[];
+  }[] = [
+    {
+      label: "1st Year",
+      options: [
+        {
+          value: "CSET101",
+          label: "Computational Thinking and Programming",
+          credits: 5,
+        },
+        { value: "EMAT101", label: "Engineering Calculus ", credits: 4 },
+        { value: "EPHY105L", label: "Electromagnetics", credits: 3 },
+        {
+          value: "CSET108",
+          label: "Environment and Sustainability",
+          credits: 3,
+        },
+        {
+          value: "CSET107",
+          label: "Foundations of Innovation and Entrepreneurship",
+          credits: 2,
+        },
+        { value: "CSET103 ", label: "New Age Life Skills", credits: 2 },
+        {
+          value: "CSET102",
+          label: "Introduction to Electrical and Electronics Engineering",
+          credits: 4,
+        },
+        {
+          value: "EMAT102",
+          label: "Linear Algebra and Ordinary Differential Equations",
+          credits: 4,
+        },
+        {
+          value: "CSET106",
+          label: "Discrete Mathematical Structures",
+          credits: 4,
+        },
+        { value: "CSET105", label: "Digital Design", credits: 4 },
+        {
+          value: "CSET109",
+          label: "Object Oriented Programming using Java",
+          credits: 6,
+        },
+        { value: "EPHY108L", label: "Mechanics", credits: 3 },
+      ],
+    },
+    {
+      label: "2nd Year",
+      options: [
+        {
+          value: "CSET201",
+          label: "Information Management Systems",
+          credits: 4,
+        },
+        { value: "CSET202", label: "Data Structures using C++", credits: 7 },
+        {
+          value: "CSET203",
+          label: "Microprocessors and Computer Architecture",
+          credits: 4,
+        },
+        { value: "CSET240", label: "Probability and Statistics", credits: 5 },
+        { value: "CSET205", label: "Software Engineering", credits: 4 },
+        { value: "CSET211", label: "Statistical Machine Learning", credits: 3 },
+        { value: "CSET212", label: "Blockchain Foundations", credits: 3 },
+        { value: "CSET213", label: "Linux and Shell Programming", credits: 3 },
+        { value: "CSET214", label: "Data Analysis using Python", credits: 3 },
+        {
+          value: "CSET217",
+          label: "Software Development with DevOps",
+          credits: 3,
+        },
+        { value: "CSET218", label: "Full Stack Development", credits: 3 },
+        { value: "CSET224", label: "Cloud Computing", credits: 3 },
+      ],
+    },
+  ];
 
   const deleteCourse = (index: number) => {
     const updatedCourses = [...courses];
@@ -33,18 +156,22 @@ const Page = () => {
   };
 
   const addCourse = () => {
-    if (courseName && credits && grade) {
+    if (
+      selectedCourse &&
+      selectedCourse.value !== "Select..." &&
+      selectedCredits &&
+      grade
+    ) {
       const newCourse = {
-        name: courseName,
-        credits: parseInt(credits),
+        name: selectedCourse.value,
+        credits: parseInt(selectedCredits),
         grade: grade,
       };
 
       setCourses([...courses, newCourse]);
-
-      setCourseName("");
-      setCredits("");
       setGrade("");
+      setSelectedCourse(null);
+      setSelectedCredits("");
     }
   };
 
@@ -83,6 +210,10 @@ const Page = () => {
     return gradeScores[grade] || 0;
   };
 
+  const filteredCourseOptions =
+    courseOptions.find((year) => year.label === selectedYear?.value)?.options ||
+    [];
+
   return (
     <div className="flex flex-col w-full min-h-screen p-10">
       <header className="flex items-center justify-between mb-10">
@@ -108,25 +239,42 @@ const Page = () => {
         </Link>
       </header>
       <main className="flex flex-col gap-8">
-        {}
         <Card>
           <CardHeader>
             <CardTitle className="custom-text-color-3">Add Course</CardTitle>
             <CardDescription>Enter your course details below</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            {}
+            <div className="space-y-2">
+              <Label htmlFor="courseName">Year</Label>
+              <Select
+                options={[
+                  { value: "1st Year", label: "1st Year" },
+                  { value: "2nd Year", label: "2nd Year" },
+                ]}
+                value={selectedYear}
+                onChange={(selectedOption) =>
+                  selectedOption && setSelectedYear(selectedOption)
+                }
+                isSearchable={false}
+                styles={customStyles}
+                placeholder="Select Year"
+              />
+            </div>
             <div className="space-y-2">
               <Label htmlFor="courseName">Course Name</Label>
-              <Input
+              <Select
                 id="courseName"
-                placeholder="Course Name"
-                required
-                type="text"
-                value={courseName}
-                onChange={(e) => setCourseName(e.target.value)}
-                onKeyPress={handleKeyPress}
-                style={{ color: "white", backgroundColor: "#1E1E1E" }}
+                options={filteredCourseOptions}
+                value={selectedCourse}
+                defaultValue={null}
+                onChange={(selectedOption) => {
+                  setSelectedCourse(selectedOption);
+                  setSelectedCredits(String(selectedOption?.credits || 0));
+                }}
+                styles={customStyles}
+                placeholder="Select Course"
+                isClearable={isClearable}
               />
             </div>
             <div className="space-y-2">
@@ -136,8 +284,8 @@ const Page = () => {
                 placeholder="Credits"
                 required
                 type="number"
-                value={credits}
-                onChange={(e) => setCredits(e.target.value)}
+                value={selectedCredits}
+                onChange={(e) => setSelectedCredits(e.target.value)}
                 onKeyPress={handleKeyPress}
                 style={{ color: "white", backgroundColor: "#1E1E1E" }}
               />
@@ -175,7 +323,7 @@ const Page = () => {
               <table className="w-full">
                 <thead>
                   <tr>
-                    <th className="text-left underline">Course Name</th>
+                    <th className="text-left underline">Course Code</th>
                     <th className="text-center underline">Credits</th>
                     <th className="text-center underline">Grade</th>
                     {}
