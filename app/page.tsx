@@ -82,7 +82,7 @@ const Page = () => {
           credits: 5,
         },
         { value: "EMAT101", label: "Engineering Calculus ", credits: 4 },
-        { value: "EPHY105L", label: "Electromagnetics", credits: 3 },
+        { value: "EPHY111L", label: "Electromagnetics + Mechanics", credits: 5 },
         {
           value: "CSET108",
           label: "Environment and Sustainability",
@@ -115,7 +115,6 @@ const Page = () => {
           label: "Object Oriented Programming using Java",
           credits: 6,
         },
-        { value: "EPHY108L", label: "Mechanics", credits: 3 },
       ],
     },
     {
