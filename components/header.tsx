@@ -12,9 +12,9 @@ const Header = () => {
         <Link className="" href="/">
           <Typist typingDelay={60} cursor={<span className="cursor">|</span>}>
             <span className="sm:hidden">
-              GPA Calculate Kar
+              GPA Calculator
               <Typist.Delay ms={500} />
-              <Typist.Backspace count={9} />
+              <Typist.Backspace count={6} />
             </span>
             <span className="hidden sm:inline">
               GPA Calculate Kar
