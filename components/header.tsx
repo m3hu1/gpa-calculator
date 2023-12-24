@@ -13,7 +13,7 @@ const Header = () => {
           <span className="hidden sm:inline">GPA Calculator</span>
         </Link>
       </div>
-      <div className="flex items-center gap-8">
+      <div className="flex items-center gap-5">
         <Link className="underline howToUse" href="/howtouse">
           How to Use
         </Link>
