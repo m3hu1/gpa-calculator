@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import {
   CardTitle,
@@ -14,6 +13,7 @@ import {
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import Select from "react-select";
+import Header from "@/components/header";
 
 interface CustomStyles {
   control: (provided: any, state: any) => any;
@@ -229,28 +229,8 @@ const Page = () => {
 
   return (
     <div className="flex flex-col w-full min-h-screen p-10">
-      <header className="flex items-center justify-between mb-10">
-        <div className="flex items-center gap-2 text-lg font-semibold sm:text-base custom-text-color">
-          <img src="/favicon.png" alt="Logo" className="w-8 h-8" />
-          {}
-          <span>GPA Calculator</span>
-        </div>
-        <Link href="https://github.com/m3hu1/gpa-calculator">
-          <Button className="rounded-full" size="icon" variant="ghost">
-            <img
-              alt="GitHub Icon"
-              height="32"
-              src="/github.png"
-              style={{
-                aspectRatio: "32/32",
-                objectFit: "cover",
-              }}
-              width="32"
-            />
-            <span className="sr-only">GitHub Profile</span>
-          </Button>
-        </Link>
-      </header>
+      <Header />
+
       <main className="flex flex-col gap-8">
         <Card>
           <CardHeader>
