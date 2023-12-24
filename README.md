@@ -8,3 +8,5 @@ A web application built using Next.js that allows students to calculate their GP
 - Tailwind CSS
 - React
 - TypeScript
+
+`Developed by Mehul`
