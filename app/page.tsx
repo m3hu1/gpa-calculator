@@ -64,11 +64,21 @@ const Page = () => {
     credits: number;
   } | null>(null);
   const [selectedCredits, setSelectedCredits] = useState("");
+  const [selectedGrade, setSelectedGrade] = useState<string | null>(null);
   const [selectedYear, setSelectedYear] = useState<{
     value: string;
     label: string;
   } | null>(null);
-  const [grade, setGrade] = useState("");
+  const gradeOptions: { value: string; label: string }[] = [
+    { value: "A+", label: "A+" },
+    { value: "A", label: "A" },
+    { value: "B+", label: "B+" },
+    { value: "B", label: "B" },
+    { value: "C+", label: "C+" },
+    { value: "C", label: "C" },
+    { value: "D", label: "D" },
+    { value: "F", label: "F" },
+  ];
   const courseOptions: {
     label: string;
     options: { value: string; label: string; credits: number }[];
@@ -82,7 +92,11 @@ const Page = () => {
           credits: 5,
         },
         { value: "EMAT101", label: "Engineering Calculus ", credits: 4 },
-        { value: "EPHY111L", label: "Electromagnetics + Mechanics", credits: 5 },
+        {
+          value: "EPHY111L",
+          label: "Electromagnetics + Mechanics",
+          credits: 5,
+        },
         {
           value: "CSET108",
           label: "Environment and Sustainability",
@@ -159,18 +173,18 @@ const Page = () => {
       selectedCourse &&
       selectedCourse.value !== "Select..." &&
       selectedCredits &&
-      grade
+      selectedGrade
     ) {
       const newCourse = {
         name: selectedCourse.value,
         credits: parseInt(selectedCredits),
-        grade: grade,
+        grade: selectedGrade,
       };
 
       setCourses([...courses, newCourse]);
-      setGrade("");
       setSelectedCourse(null);
       setSelectedCredits("");
+      setSelectedGrade(null);
     }
   };
 
@@ -291,15 +305,21 @@ const Page = () => {
             </div>
             <div className="space-y-2">
               <Label htmlFor="grade">Grade</Label>
-              <Input
+              <Select
                 id="grade"
-                placeholder="Expected Grade (A+,A,B+,B,C+,C,D,F)"
-                required
-                type="text"
-                value={grade}
-                onChange={(e) => setGrade(e.target.value)}
-                onKeyPress={handleKeyPress}
-                style={{ color: "white", backgroundColor: "#1E1E1E" }}
+                options={gradeOptions}
+                value={
+                  gradeOptions.find(
+                    (option) => option.value === selectedGrade
+                  ) || null
+                }
+                defaultValue={null}
+                onChange={(selectedOption) =>
+                  setSelectedGrade(selectedOption?.value || null)
+                }
+                isSearchable={true}
+                styles={customStyles}
+                placeholder="Select Grade"
               />
             </div>
           </CardContent>
