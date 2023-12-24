@@ -322,7 +322,10 @@ const Page = () => {
               <table className="w-full">
                 <thead>
                   <tr>
-                    <th className="text-left underline">Course Code</th>
+                    <th className="text-left underline hidden sm:inline">
+                      Course Code
+                    </th>
+                    <th className="text-left underline sm:hidden">Code</th>
                     <th className="text-center underline">Credits</th>
                     <th className="text-center underline">Grade</th>
                     {}

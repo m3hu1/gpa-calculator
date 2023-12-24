@@ -9,7 +9,7 @@ const Header = () => {
       <div className="flex items-center gap-2 text-lg font-semibold sm:text-base custom-text-color">
         <img src="/favicon.png" alt="Logo" className="w-8 h-8" />
         <Link className="" href="/">
-        <span className="sm:hidden">GPA Calc</span>
+          <span className="sm:hidden">GPA Calc</span>
           <span className="hidden sm:inline">GPA Calculator</span>
         </Link>
       </div>
