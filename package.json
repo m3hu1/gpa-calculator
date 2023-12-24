@@ -21,6 +21,7 @@
     "react": "^18",
     "react-dom": "^18",
     "react-select": "^5.8.0",
+    "react-typist-component": "^1.0.5",
     "tailwind-merge": "^2.2.0",
     "tailwindcss-animate": "^1.0.7"
   },

@@ -1,7 +1,8 @@
-// components/Header.tsx
+"use client";
 import React from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import Typist from "@/node_modules/react-typist-component";
 
 const Header = () => {
   return (
@@ -9,8 +10,19 @@ const Header = () => {
       <div className="flex items-center gap-2 text-lg font-semibold sm:text-base custom-text-color">
         <img src="/favicon.png" alt="Logo" className="w-8 h-8" />
         <Link className="" href="/">
-          <span className="sm:hidden">GPA Calc</span>
-          <span className="hidden sm:inline">GPA Calculator</span>
+          <Typist typingDelay={60} cursor={<span className="cursor">|</span>}>
+            <span className="sm:hidden">
+              GPA Calculator
+              <Typist.Delay ms={200} />
+              <Typist.Backspace count={6} />
+            </span>
+            <span className="hidden sm:inline">
+              GPA Calculate Kar
+              <Typist.Delay ms={800} />
+              <Typist.Backspace count={5} />
+              or
+            </span>
+          </Typist>
         </Link>
       </div>
       <div className="flex items-center gap-5">
