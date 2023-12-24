@@ -8,9 +8,12 @@ const Header = () => {
     <header className="flex items-center justify-between mb-10">
       <div className="flex items-center gap-2 text-lg font-semibold sm:text-base custom-text-color">
         <img src="/favicon.png" alt="Logo" className="w-8 h-8" />
-        <Link className="" href="/">GPA Calculator</Link>
+        <Link className="" href="/">
+        <span className="sm:hidden">GPA Calc</span>
+          <span className="hidden sm:inline">GPA Calculator</span>
+        </Link>
       </div>
-      <div className="flex items-center gap-10">
+      <div className="flex items-center gap-8">
         <Link className="underline howToUse" href="/howtouse">
           How to Use
         </Link>
