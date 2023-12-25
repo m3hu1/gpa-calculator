@@ -299,7 +299,7 @@ const Page = () => {
                 }
                 isSearchable={true}
                 styles={customStyles}
-                placeholder="Select Grade"
+                placeholder="Select Expected Grade"
               />
             </div>
           </CardContent>
