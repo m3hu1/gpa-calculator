@@ -57,6 +57,8 @@ interface Course {
 
 const Page = () => {
   const [isClearable, setIsClearable] = useState(true);
+  const [isCustomCourse, setIsCustomCourse] = useState(false);
+  const [customCourseCode, setCustomCourseCode] = useState("");
   const [courses, setCourses] = useState<Course[]>([]);
   const [selectedCourse, setSelectedCourse] = useState<{
     value: string;
@@ -129,6 +131,11 @@ const Page = () => {
           label: "Object Oriented Programming using Java",
           credits: 6,
         },
+        {
+          value: "CUSTOM",
+          label: "Custom Course",
+          credits: 0,
+        },
       ],
     },
     {
@@ -158,6 +165,7 @@ const Page = () => {
         },
         { value: "CSET218", label: "Full Stack Development", credits: 3 },
         { value: "CSET224", label: "Cloud Computing", credits: 3 },
+        { value: "CUSTOM", label: "Custom Course", credits: 0 },
       ],
     },
   ];
@@ -170,19 +178,19 @@ const Page = () => {
 
   const addCourse = () => {
     if (
-      selectedCourse &&
-      selectedCourse.value !== "Select..." &&
-      selectedCredits &&
-      selectedGrade
+      (selectedCourse && selectedCourse.value !== "Select...") ||
+      (isCustomCourse && customCourseCode)
     ) {
       const newCourse = {
-        name: selectedCourse.value,
+        name: isCustomCourse ? customCourseCode : selectedCourse?.value || "",
         credits: parseInt(selectedCredits),
-        grade: selectedGrade,
+        grade: selectedGrade || "",
       };
 
       setCourses([...courses, newCourse]);
       setSelectedCourse(null);
+      setIsCustomCourse(false);
+      setCustomCourseCode("");
       setSelectedCredits("");
       setSelectedGrade(null);
     }
@@ -259,16 +267,33 @@ const Page = () => {
               <Select
                 id="courseName"
                 options={filteredCourseOptions}
-                value={selectedCourse}
+                value={isCustomCourse ? null : selectedCourse}
                 defaultValue={null}
                 onChange={(selectedOption) => {
-                  setSelectedCourse(selectedOption);
+                  if (selectedOption && selectedOption.value === "CUSTOM") {
+                    setIsCustomCourse(true);
+                  } else {
+                    setSelectedCourse(selectedOption);
+                    setIsCustomCourse(false);
+                  }
                   setSelectedCredits(String(selectedOption?.credits || 0));
                 }}
                 styles={customStyles}
-                placeholder="Select Course"
+                placeholder={isCustomCourse ? "Custom Course" : "Select Course"}
                 isClearable={isClearable}
               />
+              {isCustomCourse && (
+                <Input
+                  id="customCourseInput"
+                  placeholder="Enter the course code"
+                  value={customCourseCode}
+                  onChange={(e) => setCustomCourseCode(e.target.value)}
+                  style={{
+                    color: "white",
+                    backgroundColor: "#1E1E1E",
+                  }}
+                />
+              )}
             </div>
             <div className="space-y-2">
               <Label htmlFor="credits">Credits</Label>
