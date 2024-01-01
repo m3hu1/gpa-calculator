@@ -5,7 +5,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "BU GPA Calculator",
-  description: "Simple GPA Calculator for Bennett University Students",
+  description: "GPA Calculator for Bennett University Students",
 };
 
 export default function RootLayout({
