@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import Select from "react-select";
 import Header from "@/components/header";
+import Script from "next/script";
 
 interface CustomStyles {
   control: (provided: any, state: any) => any;
@@ -238,7 +239,16 @@ const Page = () => {
   return (
     <div className="flex flex-col w-full min-h-screen p-10">
       <Header />
-
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-M7PLQDK70Q" />
+      <Script id="google-analytics">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+ 
+          gtag('config', 'G-M7PLQDK70Q');
+        `}
+      </Script>
       <main className="flex flex-col gap-8">
         <Card>
           <CardHeader>
