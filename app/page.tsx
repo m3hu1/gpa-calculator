@@ -159,6 +159,7 @@ const Page = () => {
         { value: "CSET212", label: "Blockchain Foundations", credits: 3 },
         { value: "CSET213", label: "Linux and Shell Programming", credits: 3 },
         { value: "CSET214", label: "Data Analysis using Python", credits: 3 },
+        { value: "CSET216", label: "UI/UX", credits: 3},
         {
           value: "CSET217",
           label: "Software Development with DevOps",
