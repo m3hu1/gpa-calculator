@@ -14,6 +14,7 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import Select from "react-select";
 import Header from "@/components/header";
+import Footer from "@/components/footer";
 import Script from "next/script";
 
 interface CustomStyles {
@@ -406,6 +407,8 @@ const Page = () => {
           </CardContent>
         </Card>
       </main>
+      <br></br>
+      <Footer />
     </div>
   );
 };
