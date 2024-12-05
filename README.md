@@ -10,3 +10,11 @@ A web application built using Next.js that allows students to calculate their GP
 - TypeScript
 
 `Developed by Mehul`
+
+## Contributors
+
+<a href="https://github.com/m3hu1/gpa-calculator/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=m3hu1/gpa-calculator" />
+</a>
+<br></br>
+Thanks for contributing!
