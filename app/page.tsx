@@ -2,8 +2,6 @@
 
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import AIElecs from "@/app/assets/AIElective.json";
-import BlockchainElecs from "@/app/assets/BlockchainElectives.json";
 import {
   CardTitle,
   CardDescription,
@@ -250,6 +248,7 @@ const Page = () => {
           label: "Open Elective",
           credits: 3,
         },
+        { value: "CUSTOM", label: "Custom Course", credits: 0 },
       ],
     },
   ];
