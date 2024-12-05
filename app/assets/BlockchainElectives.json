@@ -1,0 +1,52 @@
+[
+  {
+    "value": "CSET350",
+    "label": "Blockchain Technologies: Platforms & Applications",
+    "credits": 3
+  },
+  {
+    "value": "CSET351",
+    "label": "Smart Contracts and Solidity Programming",
+    "credits": 3
+  },
+  {
+    "value": "CSET352",
+    "label": "Digital Currencies and Blockchain",
+    "credits": 3
+  },
+  {
+    "value": "CSET353",
+    "label": "Blockchain Policy: Legal, Social and Economic Impact",
+    "credits": 3
+  },
+  {
+    "value": "CSET354",
+    "label": "Cyber Security with Blockchain",
+    "credits": 3
+  },
+  {
+    "value": "CSET355",
+    "label": "Web Development for Blockchain Applications",
+    "credits": 3
+  },
+  {
+    "value": "CSET356",
+    "label": "Security and Privacy for Big Data Analytics",
+    "credits": 3
+  },
+  {
+    "value": "CSET357",
+    "label": "Modern Cryptography",
+    "credits": 3
+  },
+  {
+    "value": "CSET358",
+    "label": "Cloud Infrastructure and Services",
+    "credits": 3
+  },
+  {
+    "value": "CSET359",
+    "label": "Special Topics in Blockchain",
+    "credits": 3
+  }
+]
