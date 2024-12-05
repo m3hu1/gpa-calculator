@@ -210,6 +210,47 @@ const Page = () => {
         { value: "CUSTOM", label: "Custom Course", credits: 0 },
       ],
     },
+    {
+      label: "3rd Year",
+      options: [
+        {
+          value: "CSET301",
+          label: "Artificial Intelligence and Machine Learning ",
+          credits: 5,
+        },
+        {
+          value: "CSET302",
+          label: "Automata Theory and Computability",
+          credits: 4,
+        },
+        {
+          value: "CSET305",
+          label: "High Performance Computing ",
+          credits: 4,
+        },
+        {
+          value: "CSET303",
+          label: "Seminar on Special Topics in Emerging Areas",
+          credits: 1,
+        },
+        {
+          value: "CSET304",
+          label: "Competitive Programming",
+          credits: 2,
+        },
+        {
+          value: "CSETxxx",
+          label: "Specialization Elective",
+          credits: 3,
+        },
+        {
+          value: "CSETxxx",
+          label: "Open Elective",
+          credits: 3,
+        },
+        { value: "CUSTOM", label: "Custom Course", credits: 0 },
+      ],
+    },
   ];
 
   const deleteCourse = (index: number) => {
@@ -303,6 +344,7 @@ const Page = () => {
                 options={[
                   { value: "1st Year", label: "1st Year" },
                   { value: "2nd Year", label: "2nd Year" },
+                  { value: "3rd Year", label: "3rd Year" },
                 ]}
                 value={selectedYear}
                 onChange={(selectedOption) =>
